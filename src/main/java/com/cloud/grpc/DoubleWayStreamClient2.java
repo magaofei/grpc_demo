@@ -6,7 +6,7 @@ import io.grpc.stub.StreamObserver;
 
 import java.util.Scanner;
 
-public class DoubleWayStreamClient {
+public class DoubleWayStreamClient2 {
 
     public static void main(String[] args) {
 
@@ -15,13 +15,13 @@ public class DoubleWayStreamClient {
         ManagedChannel channel = channelBuilder.build();
 
         StreamObserver<DoubleWayStream.RequestMessage> requestObserver =
-            DoubleWayStreamServiceGrpc.newStub(channel).doubleWayStreamFun(new StreamObserver<DoubleWayStream.ResponseMessage>() {
+            DoubleWayStreamServiceGrpc.newStub(channel).doubleWayStreamFun2(new StreamObserver<DoubleWayStream.ResponseMessage>() {
                 @Override public void onNext(DoubleWayStream.ResponseMessage responseMessage) {
                     System.out.println("收到服务端发来" + responseMessage.getRspMsg());
                 }
 
                 @Override public void onError(Throwable throwable) {
-                    System.out.println("error ");
+                    System.out.println("error " + throwable.getMessage());
                 }
 
                 @Override public void onCompleted() {

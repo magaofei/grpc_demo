@@ -13,6 +13,11 @@
     </remote-repository>
     <remote-repository>
       <option name="id" value="aliyun" />
+      <option name="name" value="aliyun builds" />
+      <option name="url" value="https://maven.aliyun.com/repository/public" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="aliyun" />
       <option name="name" value="aliyun" />
       <option name="url" value="https://maven.aliyun.com/nexus/content/groups/public/" />
     </remote-repository>

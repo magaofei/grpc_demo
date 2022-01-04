@@ -61,6 +61,37 @@ public final class DoubleWayStreamServiceGrpc {
     return getDoubleWayStreamFunMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.cloud.grpc.DoubleWayStream.RequestMessage,
+      com.cloud.grpc.DoubleWayStream.ResponseMessage> getDoubleWayStreamFun2Method;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "DoubleWayStreamFun2",
+      requestType = com.cloud.grpc.DoubleWayStream.RequestMessage.class,
+      responseType = com.cloud.grpc.DoubleWayStream.ResponseMessage.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.cloud.grpc.DoubleWayStream.RequestMessage,
+      com.cloud.grpc.DoubleWayStream.ResponseMessage> getDoubleWayStreamFun2Method() {
+    io.grpc.MethodDescriptor<com.cloud.grpc.DoubleWayStream.RequestMessage, com.cloud.grpc.DoubleWayStream.ResponseMessage> getDoubleWayStreamFun2Method;
+    if ((getDoubleWayStreamFun2Method = DoubleWayStreamServiceGrpc.getDoubleWayStreamFun2Method) == null) {
+      synchronized (DoubleWayStreamServiceGrpc.class) {
+        if ((getDoubleWayStreamFun2Method = DoubleWayStreamServiceGrpc.getDoubleWayStreamFun2Method) == null) {
+          DoubleWayStreamServiceGrpc.getDoubleWayStreamFun2Method = getDoubleWayStreamFun2Method =
+              io.grpc.MethodDescriptor.<com.cloud.grpc.DoubleWayStream.RequestMessage, com.cloud.grpc.DoubleWayStream.ResponseMessage>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "DoubleWayStreamFun2"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.cloud.grpc.DoubleWayStream.RequestMessage.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.cloud.grpc.DoubleWayStream.ResponseMessage.getDefaultInstance()))
+              .setSchemaDescriptor(new DoubleWayStreamServiceMethodDescriptorSupplier("DoubleWayStreamFun2"))
+              .build();
+        }
+      }
+    }
+    return getDoubleWayStreamFun2Method;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -98,6 +129,13 @@ public final class DoubleWayStreamServiceGrpc {
       return asyncUnimplementedStreamingCall(getDoubleWayStreamFunMethod(), responseObserver);
     }
 
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.RequestMessage> doubleWayStreamFun2(
+        io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.ResponseMessage> responseObserver) {
+      return asyncUnimplementedStreamingCall(getDoubleWayStreamFun2Method(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -107,6 +145,13 @@ public final class DoubleWayStreamServiceGrpc {
                 com.cloud.grpc.DoubleWayStream.RequestMessage,
                 com.cloud.grpc.DoubleWayStream.ResponseMessage>(
                   this, METHODID_DOUBLE_WAY_STREAM_FUN)))
+          .addMethod(
+            getDoubleWayStreamFun2Method(),
+            asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.cloud.grpc.DoubleWayStream.RequestMessage,
+                com.cloud.grpc.DoubleWayStream.ResponseMessage>(
+                  this, METHODID_DOUBLE_WAY_STREAM_FUN2)))
           .build();
     }
   }
@@ -138,6 +183,14 @@ public final class DoubleWayStreamServiceGrpc {
         io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.ResponseMessage> responseObserver) {
       return asyncBidiStreamingCall(
           getChannel().newCall(getDoubleWayStreamFunMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     */
+    public io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.RequestMessage> doubleWayStreamFun2(
+        io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.ResponseMessage> responseObserver) {
+      return asyncBidiStreamingCall(
+          getChannel().newCall(getDoubleWayStreamFun2Method(), getCallOptions()), responseObserver);
     }
   }
 
@@ -186,6 +239,7 @@ public final class DoubleWayStreamServiceGrpc {
   }
 
   private static final int METHODID_DOUBLE_WAY_STREAM_FUN = 0;
+  private static final int METHODID_DOUBLE_WAY_STREAM_FUN2 = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -216,6 +270,9 @@ public final class DoubleWayStreamServiceGrpc {
       switch (methodId) {
         case METHODID_DOUBLE_WAY_STREAM_FUN:
           return (io.grpc.stub.StreamObserver<Req>) serviceImpl.doubleWayStreamFun(
+              (io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.ResponseMessage>) responseObserver);
+        case METHODID_DOUBLE_WAY_STREAM_FUN2:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.doubleWayStreamFun2(
               (io.grpc.stub.StreamObserver<com.cloud.grpc.DoubleWayStream.ResponseMessage>) responseObserver);
         default:
           throw new AssertionError();
@@ -269,6 +326,7 @@ public final class DoubleWayStreamServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new DoubleWayStreamServiceFileDescriptorSupplier())
               .addMethod(getDoubleWayStreamFunMethod())
+              .addMethod(getDoubleWayStreamFun2Method())
               .build();
         }
       }

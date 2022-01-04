@@ -2,6 +2,7 @@ package com.cloud.grpc;
 
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
+import io.grpc.stub.StreamObserver;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,8 +12,8 @@ public class DoubleWayStreamServer {
     public static void main(String[] args) {
 
         ServerBuilder<?> serverBuilder = ServerBuilder.forPort(8899);
-        DoubleWayStreamIml doubleWayStreamIml=new DoubleWayStreamIml();
-        serverBuilder.addService(doubleWayStreamIml);
+        DoubleWayStreamServerIml doubleWayStreamServerIml =new DoubleWayStreamServerIml();
+        serverBuilder.addService(doubleWayStreamServerIml);
         Server server = serverBuilder.build();
         try {
             server.start();
@@ -27,8 +28,11 @@ public class DoubleWayStreamServer {
                             break;
                         }
                         try {
-                            doubleWayStreamIml.getResponseMessageStreamObserver().onNext(
-                                DoubleWayStream.ResponseMessage.newBuilder().setRspMsg(str).build());
+                            for (StreamObserver<DoubleWayStream.ResponseMessage> responseMessageStreamObserver : doubleWayStreamServerIml.getResponseMessageStreamObserver()) {
+                                responseMessageStreamObserver.onNext(
+                                        DoubleWayStream.ResponseMessage.newBuilder().setRspMsg(str).build());
+                            }
+
                         }catch (Exception e){
                             System.out.println("【异常】：没有客户端连接...");
                             //一般客户端链接失败就会断开

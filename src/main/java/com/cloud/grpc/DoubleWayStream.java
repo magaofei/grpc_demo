@@ -29,6 +29,18 @@ public final class DoubleWayStream {
      */
     com.google.protobuf.ByteString
         getReqMsgBytes();
+
+    /**
+     * <code>string param = 2;</code>
+     * @return The param.
+     */
+    java.lang.String getParam();
+    /**
+     * <code>string param = 2;</code>
+     * @return The bytes for param.
+     */
+    com.google.protobuf.ByteString
+        getParamBytes();
   }
   /**
    * Protobuf type {@code com.cloud.grpc.RequestMessage}
@@ -44,6 +56,7 @@ public final class DoubleWayStream {
     }
     private RequestMessage() {
       reqMsg_ = "";
+      param_ = "";
     }
 
     @java.lang.Override
@@ -80,6 +93,12 @@ public final class DoubleWayStream {
               java.lang.String s = input.readStringRequireUtf8();
 
               reqMsg_ = s;
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              param_ = s;
               break;
             }
             default: {
@@ -152,6 +171,44 @@ public final class DoubleWayStream {
       }
     }
 
+    public static final int PARAM_FIELD_NUMBER = 2;
+    private volatile java.lang.Object param_;
+    /**
+     * <code>string param = 2;</code>
+     * @return The param.
+     */
+    @java.lang.Override
+    public java.lang.String getParam() {
+      java.lang.Object ref = param_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        param_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string param = 2;</code>
+     * @return The bytes for param.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getParamBytes() {
+      java.lang.Object ref = param_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        param_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -169,6 +226,9 @@ public final class DoubleWayStream {
       if (!getReqMsgBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, reqMsg_);
       }
+      if (!getParamBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, param_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -180,6 +240,9 @@ public final class DoubleWayStream {
       size = 0;
       if (!getReqMsgBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, reqMsg_);
+      }
+      if (!getParamBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, param_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -198,6 +261,8 @@ public final class DoubleWayStream {
 
       if (!getReqMsg()
           .equals(other.getReqMsg())) return false;
+      if (!getParam()
+          .equals(other.getParam())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -211,6 +276,8 @@ public final class DoubleWayStream {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + REQ_MSG_FIELD_NUMBER;
       hash = (53 * hash) + getReqMsg().hashCode();
+      hash = (37 * hash) + PARAM_FIELD_NUMBER;
+      hash = (53 * hash) + getParam().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -346,6 +413,8 @@ public final class DoubleWayStream {
         super.clear();
         reqMsg_ = "";
 
+        param_ = "";
+
         return this;
       }
 
@@ -373,6 +442,7 @@ public final class DoubleWayStream {
       public com.cloud.grpc.DoubleWayStream.RequestMessage buildPartial() {
         com.cloud.grpc.DoubleWayStream.RequestMessage result = new com.cloud.grpc.DoubleWayStream.RequestMessage(this);
         result.reqMsg_ = reqMsg_;
+        result.param_ = param_;
         onBuilt();
         return result;
       }
@@ -423,6 +493,10 @@ public final class DoubleWayStream {
         if (other == com.cloud.grpc.DoubleWayStream.RequestMessage.getDefaultInstance()) return this;
         if (!other.getReqMsg().isEmpty()) {
           reqMsg_ = other.reqMsg_;
+          onChanged();
+        }
+        if (!other.getParam().isEmpty()) {
+          param_ = other.param_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -529,6 +603,82 @@ public final class DoubleWayStream {
         onChanged();
         return this;
       }
+
+      private java.lang.Object param_ = "";
+      /**
+       * <code>string param = 2;</code>
+       * @return The param.
+       */
+      public java.lang.String getParam() {
+        java.lang.Object ref = param_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          param_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string param = 2;</code>
+       * @return The bytes for param.
+       */
+      public com.google.protobuf.ByteString
+          getParamBytes() {
+        java.lang.Object ref = param_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          param_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string param = 2;</code>
+       * @param value The param to set.
+       * @return This builder for chaining.
+       */
+      public Builder setParam(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        param_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string param = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearParam() {
+        
+        param_ = getDefaultInstance().getParam();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string param = 2;</code>
+       * @param value The bytes for param to set.
+       * @return This builder for chaining.
+       */
+      public Builder setParamBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        param_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -597,6 +747,12 @@ public final class DoubleWayStream {
      */
     com.google.protobuf.ByteString
         getRspMsgBytes();
+
+    /**
+     * <code>int32 code = 2;</code>
+     * @return The code.
+     */
+    int getCode();
   }
   /**
    * Protobuf type {@code com.cloud.grpc.ResponseMessage}
@@ -648,6 +804,11 @@ public final class DoubleWayStream {
               java.lang.String s = input.readStringRequireUtf8();
 
               rspMsg_ = s;
+              break;
+            }
+            case 16: {
+
+              code_ = input.readInt32();
               break;
             }
             default: {
@@ -720,6 +881,17 @@ public final class DoubleWayStream {
       }
     }
 
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>int32 code = 2;</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public int getCode() {
+      return code_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -737,6 +909,9 @@ public final class DoubleWayStream {
       if (!getRspMsgBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 1, rspMsg_);
       }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -748,6 +923,10 @@ public final class DoubleWayStream {
       size = 0;
       if (!getRspMsgBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, rspMsg_);
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -766,6 +945,8 @@ public final class DoubleWayStream {
 
       if (!getRspMsg()
           .equals(other.getRspMsg())) return false;
+      if (getCode()
+          != other.getCode()) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -779,6 +960,8 @@ public final class DoubleWayStream {
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + RSP_MSG_FIELD_NUMBER;
       hash = (53 * hash) + getRspMsg().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -914,6 +1097,8 @@ public final class DoubleWayStream {
         super.clear();
         rspMsg_ = "";
 
+        code_ = 0;
+
         return this;
       }
 
@@ -941,6 +1126,7 @@ public final class DoubleWayStream {
       public com.cloud.grpc.DoubleWayStream.ResponseMessage buildPartial() {
         com.cloud.grpc.DoubleWayStream.ResponseMessage result = new com.cloud.grpc.DoubleWayStream.ResponseMessage(this);
         result.rspMsg_ = rspMsg_;
+        result.code_ = code_;
         onBuilt();
         return result;
       }
@@ -992,6 +1178,9 @@ public final class DoubleWayStream {
         if (!other.getRspMsg().isEmpty()) {
           rspMsg_ = other.rspMsg_;
           onChanged();
+        }
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1097,6 +1286,37 @@ public final class DoubleWayStream {
         onChanged();
         return this;
       }
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 2;</code>
+       * @return The code.
+       */
+      @java.lang.Override
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1170,11 +1390,15 @@ public final class DoubleWayStream {
   static {
     java.lang.String[] descriptorData = {
       "\n\025doubleWayStream.proto\022\016com.cloud.grpc\"" +
-      "!\n\016RequestMessage\022\017\n\007req_msg\030\001 \001(\t\"\"\n\017Re" +
-      "sponseMessage\022\017\n\007rsp_msg\030\001 \001(\t2u\n\026Double" +
-      "WayStreamService\022[\n\022DoubleWayStreamFun\022\036" +
-      ".com.cloud.grpc.RequestMessage\032\037.com.clo" +
-      "ud.grpc.ResponseMessage\"\000(\0010\001b\006proto3"
+      "0\n\016RequestMessage\022\017\n\007req_msg\030\001 \001(\t\022\r\n\005pa" +
+      "ram\030\002 \001(\t\"0\n\017ResponseMessage\022\017\n\007rsp_msg\030" +
+      "\001 \001(\t\022\014\n\004code\030\002 \001(\0052\323\001\n\026DoubleWayStreamS" +
+      "ervice\022[\n\022DoubleWayStreamFun\022\036.com.cloud" +
+      ".grpc.RequestMessage\032\037.com.cloud.grpc.Re" +
+      "sponseMessage\"\000(\0010\001\022\\\n\023DoubleWayStreamFu" +
+      "n2\022\036.com.cloud.grpc.RequestMessage\032\037.com" +
+      ".cloud.grpc.ResponseMessage\"\000(\0010\001b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1185,13 +1409,13 @@ public final class DoubleWayStream {
     internal_static_com_cloud_grpc_RequestMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_cloud_grpc_RequestMessage_descriptor,
-        new java.lang.String[] { "ReqMsg", });
+        new java.lang.String[] { "ReqMsg", "Param", });
     internal_static_com_cloud_grpc_ResponseMessage_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_com_cloud_grpc_ResponseMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_com_cloud_grpc_ResponseMessage_descriptor,
-        new java.lang.String[] { "RspMsg", });
+        new java.lang.String[] { "RspMsg", "Code", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)
